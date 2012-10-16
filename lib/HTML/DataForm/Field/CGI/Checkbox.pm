@@ -1,7 +1,7 @@
 package HTML::DataForm::Field::CGI::Checkbox;
 use base 'HTML::DataForm::Field::CGI::Base';
 
-use Angel::XHTML;
+use HTML::FromArrayref;
 
 sub align_with { 1 }
 
@@ -10,7 +10,7 @@ sub required { }
 sub controls {
 	my $me = shift;
 
-	xhtml(
+	HTML(
 		[ input => { 
 			type => 'checkbox', 
 			name => $me->{name}, 

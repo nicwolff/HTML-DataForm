@@ -4,7 +4,7 @@ use base qw(
         HTML::DataForm::Field::CGI::MultiplySelectable 
 );
 
-use Angel::XHTML;
+use HTML::FromArrayref;
 use Data::Dumper;
 
 sub align_with { 4 }
@@ -43,16 +43,16 @@ sub controls {
 
                 if ( $item_label eq '_other' ) {
                         my $ID = $name . '_SUB__other';
-                        $control = xhtml( [ input => { type => 'checkbox', name => $ID, ID => $ID, checked => $me->{value}->{ '_other' } } ] );
-                        $label = xhtml( 
+                        $control = HTML( [ input => { type => 'checkbox', name => $ID, ID => $ID, checked => $me->{value}->{ '_other' } } ] );
+                        $label = HTML( 
                                 [ label => { for => $ID }, 'Other' ], 
                                 ' ', 
                                 [ input => { name => $name . '_SUB__other_value', value => $me->{value}->{_other_value}, onChange => "document.form.$ID.checked=true" } ] 
                         );
                 } else {
                         my $ID = $name . '_SUB_' . $value;
-                        $control = xhtml( [ input => { type => 'checkbox', name => $ID, ID => $ID, checked => $me->{value}->{ $value } } ] );
-                        $label = xhtml( [ label => { for => $ID }, $item_label ] );
+                        $control = HTML( [ input => { type => 'checkbox', name => $ID, ID => $ID, checked => $me->{value}->{ $value } } ] );
+                        $label = HTML( [ label => { for => $ID }, $item_label ] );
                         if ( $me->{value}->{ $value } ){ $toggleclass = 'toggleon'; } else { $toggleclass = 'toggleoff';}
                         $gridcell = qq{<td class='$toggleclass' onClick="togglecell(this, '$ID');">$item_label</td>};
 

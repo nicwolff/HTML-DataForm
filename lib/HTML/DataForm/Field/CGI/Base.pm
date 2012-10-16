@@ -1,6 +1,6 @@
 package HTML::DataForm::Field::CGI::Base;
 
-use Angel::XHTML;
+use HTML::FromArrayref;
 use Data::Dumper;
 
 sub new {
@@ -25,7 +25,7 @@ sub table_row {
 
 	# Print number
 	if ( $me->{number} ) {
-		$html .= xhtml( $me->number );
+		$html .= HTML( $me->number );
 	} else {
 		$me->{label_colspan} += 1;
 	}
@@ -48,7 +48,7 @@ sub table_row {
 	$html .= end_tag( 'tr' );
 
 	# Print spacer row
-	$html .= xhtml( $me->space );
+	$html .= HTML( $me->space );
 
  	return $html;
 }
@@ -57,7 +57,7 @@ sub label_td {
 	my $me = shift;
 
 	my $label = $me->label;
-	xhtml(
+	HTML(
 		$label &&
 		[ td =>
 			{
@@ -84,7 +84,7 @@ sub label {
 sub controls_td {
 	my $me = shift;
 
-	xhtml(
+	HTML(
 		[ td => { colspan => $me->{label_colspan}, style => $me->{style} },
 			[[ $me->{display} ? $me->display : $me->controls ]]
 		]

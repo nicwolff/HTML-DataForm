@@ -1,7 +1,7 @@
 package HTML::DataForm::Field::CGI::List;
 use base 'HTML::DataForm::Field::CGI::Base';
 
-use Angel::XHTML;
+use HTML::FromArrayref;
 use Angel::List;
 
 sub align_with { return 1 }

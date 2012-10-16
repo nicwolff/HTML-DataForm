@@ -1,7 +1,7 @@
 package HTML::DataForm::Field::CGI::Password;
 use base 'HTML::DataForm::Field::CGI::Base';
 
-use Angel::XHTML;
+use HTML::FromArrayref;
 
 sub align_with { return 1 }
 
@@ -15,7 +15,7 @@ sub set_value_from_CGI_data {
 sub controls {
 	my $me = shift;
 
-	xhtml( 
+	HTML( 
 		[ input => {
 			name => $me->{name}, 
 			type => 'password', 

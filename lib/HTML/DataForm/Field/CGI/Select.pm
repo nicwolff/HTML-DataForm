@@ -4,7 +4,7 @@ use base qw(
 	HTML::DataForm::Field::CGI::Selectable
 );
 
-use Angel::XHTML;
+use HTML::FromArrayref;
 
 sub align_with { 2 }
 
@@ -27,13 +27,13 @@ sub controls {
 	my $html = start_tag( select => { name => $me->{name}, id => $me->{id} || $me->{name}, multiple => $is_multiple, onChange => $me->{onChange} } );
 	if ( not $is_multiple ) {
 		if ( $me->{required} ) {
-			$html .= xhtml( [ option => { value => '' }, $me->{directions} || '- Select one -' ] );
+			$html .= HTML( [ option => { value => '' }, $me->{directions} || '- Select one -' ] );
 		} else {
-			$html .= xhtml( [ 'option' ] );
+			$html .= HTML( [ 'option' ] );
 		}
 	}
 	while ( my ($option, $value) = splice @options, 0, 2 ) {
-		$html .= xhtml(
+		$html .= HTML(
 			[ option => { value => $value, selected => ( $me->is_selected( $value ) or undef ) }, $option ]
 		);
 	}

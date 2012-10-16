@@ -1,7 +1,7 @@
 package HTML::DataForm::Field::CGI::Submit;
 use base 'HTML::DataForm::Field::CGI::Base';
 
-use Angel::XHTML;
+use HTML::FromArrayref;
 
 sub align_with { 2 }
 
@@ -12,7 +12,7 @@ sub controls {
 
 	$me->{onClick} ||= 'return confirm( "Are you sure you want to delete this record?" )' if $me->{process} eq 'delete';
 
-	xhtml( 
+	HTML( 
 		[ input => { 
 			name => $me->{name}, 
 			type => 'submit', 

@@ -1,7 +1,7 @@
 package HTML::DataForm::Field::CGI::Textarea;
 use base 'HTML::DataForm::Field::CGI::Base';
 
-use Angel::XHTML;
+use HTML::FromArrayref;
 
 sub valign { 'top' }
 
@@ -10,7 +10,7 @@ sub align_with { 'textareas' }
 sub controls {
 	my $me = shift;
 
-	xhtml(
+	HTML(
 		[ textarea => { 
 				name => $me->{name}, 
 				id => $me->{id} || $me->{name},

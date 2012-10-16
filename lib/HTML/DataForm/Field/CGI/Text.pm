@@ -1,14 +1,14 @@
 package HTML::DataForm::Field::CGI::Text;
 use base 'HTML::DataForm::Field::CGI::Base';
 
-use Angel::XHTML;
+use HTML::FromArrayref;
 
 sub align_with { return 1 }
 
 sub controls {
 	my $me = shift;
 
-	xhtml(
+	HTML(
 		[ input => {
 			name => $me->{name},
 			id => $me->{id} || $me->{name},

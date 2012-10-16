@@ -5,7 +5,7 @@ use base qw(
 );
 
 
-use Angel::XHTML;
+use HTML::FromArrayref;
 
 sub align_with { 1 }
 
@@ -31,7 +31,7 @@ sub controls {
 		if ( $item_label eq '_other' ) {
 			my $ID = $name . '_SUB__other';
 			my $n_items = $#items + 1;
-			$control_html = xhtml( 
+			$control_html = HTML( 
 				[ input => {
 					type => 'radio', 
 					name => $name, 
@@ -40,14 +40,14 @@ sub controls {
 					checked => ( $me->{value} eq '_other' or undef ) 
 				} ] 
 			);
-			$label_html = xhtml( 
+			$label_html = HTML( 
 				[ label => { for => $ID }, 'Other' ],
 				' ',
 				[ input => { name => $name . '_SUB__other_value', value => $me->{other_value}, onChange => "document.form.$name\[$n_items].checked=true" } ] 
 			);
 		} else {
 			my $ID = $me->{name} . '_SUB_' . $value;
-			$control_html = xhtml( 
+			$control_html = HTML( 
 				[ input => { 
 					type => 'radio', 
 					name => $me->{name}, 
@@ -56,7 +56,7 @@ sub controls {
 					checked => ( $me->{value} eq $value or undef ) 
 				} ] 
 			);
-			$label_html = xhtml( [ label => { for => $ID }, $item_label ] );
+			$label_html = HTML( [ label => { for => $ID }, $item_label ] );
 		}
 
 		push @items, {

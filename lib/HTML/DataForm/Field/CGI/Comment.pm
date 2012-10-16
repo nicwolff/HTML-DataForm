@@ -1,7 +1,7 @@
 package HTML::DataForm::Field::CGI::Comment;
 use base 'HTML::DataForm::Field::CGI::Base';
 
-use Angel::XHTML;
+use HTML::FromArrayref;
 
 sub align_with { 100 }
 sub valign { 'top' }
@@ -15,14 +15,14 @@ sub table_row {
 
 	# Print number	
 	if ( $me->{number} ) {
-		$html .= xhtml( $me->number );
+		$html .= HTML( $me->number );
 	} else {
 		$me->{_label_colspan}++;
 	}
 
 	# Print comment	
 	my $label = $me->label;
-	$html .= xhtml( 
+	$html .= HTML( 
 		$label && 
 		[ td => 
 			{ 
@@ -37,7 +37,7 @@ sub table_row {
 	$html .= end_tag( 'tr' );	
 
 	# Print spacer row	
-	$html .= xhtml( $me->space );
+	$html .= HTML( $me->space );
  	
  	return $html;
 }

@@ -1,7 +1,7 @@
 package HTML::DataForm::Field::CGI::Vat;
 use base 'HTML::DataForm::Field::CGI::Base';
 
-use Angel::XHTML;
+use HTML::FromArrayref;
 
 sub align_with { return 1 }
 
@@ -16,7 +16,7 @@ sub controls {
 
 	$me->{value} =~ /^([A-Z][A-Z])([A-Za-z0-9]{2,})/;
 
-	xhtml( 
+	HTML( 
 		[ input => { name => $me->{name} . '_COUNTRY_CODE', type => 'text', size => 2, maxlength => 2, value => $1 } ],
 		[[ '&nbsp;' ]],
 		[ input => { name => $me->{name} . '_NUMBER', type => 'text', size => 12, maxlength => 12, value => $2 } ]

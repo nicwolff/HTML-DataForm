@@ -4,7 +4,7 @@ use base qw(
 	HTML::DataForm::Field::CGI::MultiplySelectable
 );
 
-use Angel::XHTML;
+use HTML::FromArrayref;
 
 sub align_with { 4 }
 
@@ -80,7 +80,7 @@ sub controls {
 	my $width = $me->{width} || '350px';
 	my $height = $me->{height} || '200px';
 
-	return xhtml [ $me->{scrolling} && 'div' =>
+	return HTML [ $me->{scrolling} && 'div' =>
 		{
 			style => "overflow: auto; width: $width; height: $height; border: 1px solid gray;",
 			class => 'checkboxes_scroller'

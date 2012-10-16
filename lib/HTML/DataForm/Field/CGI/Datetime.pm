@@ -1,7 +1,7 @@
 package HTML::DataForm::Field::CGI::Datetime;
 use base 'HTML::DataForm::Field::CGI::Base';
 
-use Angel::XHTML;
+use HTML::FromArrayref;
 use Time::Local;
 use Data::Dumper;
 
@@ -71,7 +71,7 @@ sub date_controls {
 
 	my $blank = [ ! $me->{required} && 'option' => { value => -1 } ];
 
-	xhtml(
+	HTML(
 		[ select => { name => "$me->{name}_SUB_month" }, $blank,
 			map
 				[ option =>
@@ -100,7 +100,7 @@ sub time_controls {
 
 	my $blank = [ ! $me->{required} && 'option' => { value => -1 } ];
 
- 	xhtml(
+ 	HTML(
 		[ select => { name => "$me->{name}_SUB_hour" }, $blank,
 			map
 				[ option => { value => $_, selected => $me->is_selected('hour') }, $_ % 12 || 12, ' ', $_ < 12 ? 'AM' : 'PM' ],
@@ -143,7 +143,7 @@ sub date_display {
 		( qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec) )[$me->{value}->{month} - 1],
 		$me->{value}->{year},
 		map
-			xhtml( [ input => { name => "$me->{name}_SUB_$_", type => hidden, value => $me->{value}->{$_} } ] ),
+			HTML( [ input => { name => "$me->{name}_SUB_$_", type => hidden, value => $me->{value}->{$_} } ] ),
 			qw( year month day );
 }
 
@@ -157,7 +157,7 @@ sub time_display {
 		join( ':', $hour, @{$me->{value}}{ $me->{seconds} ? qw( minute second ) : 'minute' } ),
 		$half,
 		map
-			xhtml( [ input => { name => "$me->{name}_SUB_$_", type => hidden, value => $me->{value}->{$_} } ] ),
+			HTML( [ input => { name => "$me->{name}_SUB_$_", type => hidden, value => $me->{value}->{$_} } ] ),
 			qw( hour minute second );
 }
 
