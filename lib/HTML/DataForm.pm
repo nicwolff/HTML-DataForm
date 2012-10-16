@@ -235,7 +235,7 @@ sub html {
 	}
 
 	# Add a hidden field to hold the checksum of the hidden fields
-	$me->{data}->{_HFchecksum} = MD5->hexhash(
+	$me->{data}->{_HFchecksum} = md5_hex(
 		join '',
 			$me->{_checksum_secret},
 			map $_->{value},
