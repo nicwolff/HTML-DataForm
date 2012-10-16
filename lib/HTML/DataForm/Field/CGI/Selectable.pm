@@ -9,14 +9,13 @@ sub get_options {
 		if ( ref( $me->{list} ) eq 'ARRAY' ) {
 			push( @options, $_, $_ ) for @{ $me->{list} };
 		} else {
-			if ( $me->{sort_by_value} ) {
-				push( @options, $_, $me->{list}->{$_} ) for sort { lc $me->{list}->{$a} cmp lc $me->{list}->{$b} } keys %{ $me->{list} };
-			} else {
-				push( @options, $_, $me->{list}->{$_} ) for sort { lc $a cmp lc $b } keys %{ $me->{list} };
-			}
+			my $sorter = $me->{sort_by_value} ?
+				sub { lc $me->{list}->{$a} cmp lc $me->{list}->{$b} } :
+				sub { lc $a cmp lc $b };
+			push( @options, $_, $me->{list}->{$_} ) for sort $sorter keys %{ $me->{list} };
 		}
 	}
-	
+
 	if ( $me->{random} ) {
 		my @random;
 		srand;
