@@ -331,7 +331,7 @@ sub error_message {
 
 	push @messages, keys %bad_fields;
 
-	return xhtml( [ font => { color => 'red' }, [ p => 'Please correct these errors:' ], [ ul => map [ li => [ b => $_ ] ], @messages ] ] );
+	return HTML( [ font => { color => 'red' }, [ p => 'Please correct these errors:' ], [ ul => map [ li => [ b => $_ ] ], @messages ] ] );
 }
 
 
