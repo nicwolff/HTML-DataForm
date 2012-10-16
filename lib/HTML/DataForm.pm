@@ -147,8 +147,8 @@ sub bless_field {
 		if ( eval "require $field_class" ) {
 			bless $field, $field_class;
 			last;
-		} else {
-			warn "$! while trying to make a Field of ${which}::$type" if $which eq 'CGI';
+		} elsif ( $which eq 'CGI' ) {
+			warn "$! while trying to require $field_class and make a Field of $type";
 		}
 	}
 
