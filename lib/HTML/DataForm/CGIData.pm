@@ -1,4 +1,4 @@
-package HTML::DataTable::CGIData;
+package HTML::DataForm::CGIData;
 
 sub get {
 	my ($pkg) = @_;
