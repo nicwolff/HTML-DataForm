@@ -1,8 +1,8 @@
-package HTML::DataForm::Field::CGI::List;
+package HTML::DataForm::Field::CGI::DataTable;
 use base 'HTML::DataForm::Field::CGI::Base';
 
 use HTML::FromArrayref;
-use Angel::List;
+use HTML::DataTable;
 
 sub align_with { return 1 }
 
@@ -11,8 +11,8 @@ sub valign { 'top' }
 sub controls {
 	my $me = shift;
 
-	my $list = new Angel::List { %$me };
-	$list->html;
+	my $table = new HTML::DataTable { %$me };
+	$table->html;
 }
 
 1;
