@@ -85,7 +85,8 @@ sub new {
 		}
 	}
 
-	$me->{_checksum_secret} ||= `uname -a`;
+	local $ENV{PATH} = undef;
+	$me->{_checksum_secret} ||= `/usr/bin/uname -a`;
 
 	return $me;
 }
