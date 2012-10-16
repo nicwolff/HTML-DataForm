@@ -1,6 +1,6 @@
 package HTML::DataForm::Field::CGI::Base;
 
-use HTML::FromArrayref;
+use HTML::FromArrayref qw(HTML :TAGS);
 use Data::Dumper;
 
 sub new {
