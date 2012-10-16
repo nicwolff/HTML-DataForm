@@ -2,7 +2,7 @@ package HTML::DataForm;
 
 use 5.006;
 use strict;
-use warnings;
+use warnings; no warnings 'uninitialized';
 
 use Digest::MD5 qw(md5_hex);
 use Encode qw(encode_utf8);
