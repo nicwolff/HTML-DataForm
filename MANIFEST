@@ -3,4 +3,4 @@ Changes
 lib/HTML/DataForm.pm
 MANIFEST			This list of files
 README
-t/00-load.t
+t/00-CGI.t
