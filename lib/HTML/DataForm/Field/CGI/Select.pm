@@ -4,7 +4,7 @@ use base qw(
 	HTML::DataForm::Field::CGI::Selectable
 );
 
-use HTML::FromArrayref;
+use HTML::FromArrayref qw(HTML :TAGS);
 
 sub align_with { 2 }
 
