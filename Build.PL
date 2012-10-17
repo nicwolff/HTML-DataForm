@@ -13,6 +13,8 @@ my $builder = Module::Build->new(
     },
     requires => {
         'perl' => 5.006,
+	'HTML::FromArrayref' => 0,
+	'HTML::DataTable' => 0
     },
     add_to_cleanup      => [ 'HTML-DataForm-*' ],
     create_makefile_pl => 'traditional',
