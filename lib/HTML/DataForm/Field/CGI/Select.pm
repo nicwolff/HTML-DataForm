@@ -24,7 +24,10 @@ sub controls {
 
 	my $is_multiple = $me->multiple;
 
-	my $html = start_tag( select => { name => $me->{name}, id => $me->{id} || $me->{name}, multiple => $is_multiple, onChange => $me->{onChange} } );
+	my $html = start_tag( select => {
+		name => $me->{name}, id => $me->{id} || $me->{name},
+		multiple => $is_multiple, onChange => $me->{onChange}
+	} );
 	if ( not $is_multiple ) {
 		if ( $me->{required} ) {
 			$html .= HTML( [ option => { value => '' }, $me->{directions} || '- Select one -' ] );
