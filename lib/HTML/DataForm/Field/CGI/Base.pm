@@ -6,7 +6,7 @@ use Data::Dumper;
 sub new {
 	my $class = shift;
 
-	return bless { @_ } => $class;
+	return bless ref $_[0] ? $_[0] : { @_ } => $class;
 }
 
 sub valign { undef }

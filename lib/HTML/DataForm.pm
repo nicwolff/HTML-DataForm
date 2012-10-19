@@ -145,7 +145,7 @@ sub bless_field {
 	for my $which ( pop @class, 'CGI' ) {
 		my $field_class = join '::', @class, 'Field', $which, $type;
 		if ( eval "require $field_class" ) {
-			bless $field, $field_class;
+			$field = $field_class->new( $field );
 			last;
 		} elsif ( $which eq 'CGI' ) {
 			warn "$! while trying to require $field_class and make a Field of $type";
