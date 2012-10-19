@@ -268,7 +268,7 @@ sub html {
 			$field->{align_with_previous} !~ /y/i or
 			$field->{align_with_previous} =~ /n/i
 		) {
-			my $width = $align_with == 100 ? 'width="100%"' : '';
+			my $width = $align_with eq '100' ? 'width="100%"' : '';
 			$html .= end_tag( 'table' ) . $table_start_tag;
 		}
 
