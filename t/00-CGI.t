@@ -17,6 +17,12 @@ for my $field ( @{$form->{fields}} ) {
 
 is( $form->html, join('', <DATA>), 'form HTML is OK' );
 
+close STDOUT;
+open STDOUT, '>', \ my $output or die "Can't open STDOUT: $!";
+$form->go;
+close STDOUT;
+is( $output, "Content-type: text/html\n\n<html><head><title>Form</title></head><body>Form processed</body></html>", 'form submit is OK' );
+
 done_testing();
 
 BEGIN {
@@ -100,6 +106,7 @@ BEGIN {
 		{
 			name => 'Submit',
 			type => 'submit',
+			process => 'save',
 			value => 'Submit',
 			html => '<input value="Submit" name="x18b56cc9" type="submit">'
 		},
