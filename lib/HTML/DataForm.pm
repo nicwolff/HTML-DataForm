@@ -509,7 +509,7 @@ sub check {
 
 	if (
 		! $me->{allow_hidden_field_changes} and
-		MD5->hexhash( join '', $me->{_checksum_secret}, @hidden_values ) ne $me->{data}->{_HFchecksum}
+		md5_hex( join '', $me->{_checksum_secret}, @hidden_values ) ne $me->{data}->{_HFchecksum}
 	) {
 		$bad_fields{ 'Hidden fields were changed' }++;
 	}
